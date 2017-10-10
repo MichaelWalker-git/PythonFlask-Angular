@@ -20,7 +20,7 @@ api_manager = APIManager(app, flask_sqlalchemy_db=db)
 api_manager.create_api(Pin, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 
-@app.route('/index')
+@app.route('/')
 def index():
     return app.send_static_file('index.html')
 
