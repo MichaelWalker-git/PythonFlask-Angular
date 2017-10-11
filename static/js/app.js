@@ -5,7 +5,6 @@ app.controller("AppCtrl", function ($http) {
 
     $http.get("/api/pin").then(function (data) {
         app.pins = data.data.objects;
-        console.log(data)
     });
 
     app.addPin = function () {
@@ -13,5 +12,21 @@ app.controller("AppCtrl", function ($http) {
             .then(function (response) {
                 app.pins.push(response);
             })
-    }
+    };
+
+    app.deletePin = function (pin) {
+        $http.delete("api/pin/" + pin.id)
+            .then(function (response) {
+                app.pins.splice(app.pins.indexOf(pin), 1);
+                console.log("Delete", response);
+            })
+    };
+
+    app.updatePin = function (pin) {
+        console.log(pin.id)
+        $http.put("api/pin/" + pin.id, pin)
+            .then(function (response) {
+                console.log("update suc", response);
+            })
+    };
 });
