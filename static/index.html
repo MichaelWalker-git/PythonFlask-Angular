@@ -6,12 +6,20 @@
 </head>
 <body ng-app="app" ng-controller="AppCtrl as app">
 Your app goes here.
-
+!!!!
+<br> <br> <br> <br>
+<button ng-click="app.addPin()">Add Pin</button>
 {{ app.message }}
-
 <div ng-repeat="pin in app.pins">
     {{ pin.title }}
+    <img ng-src="{{ pin.image }}" alt=""/>
+    <div class="ui">
+        <input type="text" ng-model="pin.title"/>
+        <button ng-click="app.updatePin(pin)">Update</button>
+        <button ng-click="app.deletePin(pin)">Delete</button>
+    </div>
 </div>
+
 <script src="bower_components/angular/angular.js"></script>
 <script src="js/app.js"></script>
 </body>
