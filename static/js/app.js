@@ -23,7 +23,7 @@ app.controller("AppCtrl", function ($http) {
     };
 
     app.updatePin = function (pin) {
-        console.log(pin.id)
+        console.log(pin.id);
         $http.put("api/pin/" + pin.id, pin)
             .then(function (response) {
                 console.log("update suc", response);
